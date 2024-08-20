@@ -26,26 +26,40 @@ extpipe-pattern: '{source}:{short-name}:{rawtable-name}:{suffix}'
 
 # can contain multiple contacts, can be overwritten on pipeline level
 default-contacts:
-    - name: <Contact name>
-      email: <Contact email>
-      role: <Role name>
-      send-notification: true
+    - name: Yours Truly
+      email: yours.truly@cognite.com
+      role: admin
+      send-notification: false
 
 rawdbs:
   # list of raw-dbs > containing rawtables > containing pipelines
-    - rawdb-name: <node_name>:db
-      dataset-external-id: <node_name>:ds
-      short-name: <Short name for raw DB>
+    - rawdb-name: src:001:sap:db #<node_name>:db
+      dataset-external-id: src:001:sap:ds #<node_name>:ds
+      short-name: sap #<Short name for raw DB>
       rawtables:
-          - rawtable-name: <table name>
+          - rawtable-name: assets #<table name>
             pipelines:
-        # source is a short-name identifying the pipeline source being
-        # a 'db-extractor (db)', an 'Azure Function (az-func)',
-        # or 'Azure Data Factory (adf)', 'Python script (py)', ..
-                - source: <source type>
+          # source is a short-name identifying the pipeline source being
+          # a 'db-extractor (db)', an 'Azure Function (az-func)',
+          # or 'Azure Data Factory (adf)', 'Python script (py)', ..
+                - source: csv #<source type>
                   schedule: On trigger
                   contacts:
-                      - name: <Contact name>
-                        email: <Contact e-mail>
-                        role: <Contact role>
+                      - name: Paniz #<Contact name>
+                        email: paniz.parastar@cognite.com # <Contact e-mail>
+                        role: Bootcamp 73 Administrator #<Contact role>
+                        send-notification: false
+
+    - rawdb-name: src:002:opcua:db
+      short-name: opuca
+      dataset-external-id: src:002:opuca:ds
+      rawtables:
+          - rawtable-name: datapoints
+            pipelines:
+                - source: ice-cream-api
+                  schedule: On trigger
+                  contacts:
+                      - name: Paniz
+                        email: paniz.parastar@cognite.com
+                        role: Bootcamp 73 Administrator
                         send-notification: false
