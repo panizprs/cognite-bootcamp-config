@@ -4,7 +4,7 @@ name: deploy-extpipes-cli
 on:
     push:
         branches:
-            #- main
+      #- main
             - none
         paths:
             - config/extpipes/**
@@ -19,18 +19,18 @@ jobs:
                 environment: [test, prod]
                 include:
                     - environment: test
-                      # CDF cluster, like bluefield, greenfield or westeurope-1
+            # CDF cluster, like bluefield, greenfield or westeurope-1
                       CDF_CLUSTER: [CDF cluster]
-                      # CDF Project name
+            # CDF Project name
                       CDF_PROJECT: [CDF project]
-                      # Azure AD tenant id
+            # Azure AD tenant id
                       IDP_TENANT: [AAD tenant id]
                     - environment: prod
-                      # CDF cluster, like bluefield, greenfield or westeurope-1
+            # CDF cluster, like bluefield, greenfield or westeurope-1
                       CDF_CLUSTER: [CDF cluster]
-                      # CDF Project name
+            # CDF Project name
                       CDF_PROJECT: [CDF project]
-                      # Azure AD tenant id
+            # Azure AD tenant id
                       IDP_TENANT: [AAD tenant id]
 
         environment: ${{ matrix.environment}}
@@ -49,7 +49,7 @@ jobs:
                   EXTPIPES_IDP_SCOPES: ${{ env.CDF_HOST }}.default
 
               with:
-                  # Path to extpipes cli configuration file
+          # Path to extpipes cli configuration file
                   config_file: ./config/extpipes/extpipes-cli-config.yml
-            # "yes"|"no" deploy with special groups and aad_mappings
-            #with_special_groups: "yes"
+  # "yes"|"no" deploy with special groups and aad_mappings
+  #with_special_groups: "yes"
