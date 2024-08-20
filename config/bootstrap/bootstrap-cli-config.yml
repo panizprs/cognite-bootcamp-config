@@ -103,6 +103,7 @@ bootstrap:
                         - node-name: src:001:sap
                         - node-name: src:002:opcua
 
+
 # de-facto standards for CDF CogniteClient and logger configuration.
 # Following the same parameter structure as the 'Cognite Python Extractor-Utilities'
 # and 'Cognite DB Extractor' configuration.
